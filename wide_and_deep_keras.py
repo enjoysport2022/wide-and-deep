@@ -39,14 +39,14 @@ def maybe_download(train_data,test_data):
         df_train = pd.read_csv("http://mlr.cs.umass.edu/ml/machine-learning-databases/adult/adult.data",
             names=COLUMNS, skipinitialspace=True)
     else:
-        df_train = pd.read_csv("train.csv")
+        df_train = pd.read_csv("train.csv",names=COLUMNS, skipinitialspace=True)
 
     if not os.path.exists(test_data):
         print("downloading testing data...")
         df_test = pd.read_csv("http://mlr.cs.umass.edu/ml/machine-learning-databases/adult/adult.test",
             names=COLUMNS, skipinitialspace=True, skiprows=1)
     else:
-        df_test = pd.read_csv("test.csv")
+        df_test = pd.read_csv("test.csv",names=COLUMNS, skipinitialspace=True, skiprows=1)
 
     return df_train, df_test
 
