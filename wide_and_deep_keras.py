@@ -328,6 +328,9 @@ def wide_deep(df_train, df_test, wide_cols, x_cols, embedding_cols, cont_cols, m
     wd_inp = concatenate([w, d])
     wd_out = Dense(Y_tr_wd.shape[1], activation=activation, name='wide_deep')(wd_inp)
     wide_deep = Model(inputs=[w] + deep_inp_layer, outputs=wd_out)
+
+    wide_deep.summary()
+
     wide_deep.compile(optimizer=Adam(lr=0.01), loss=loss, metrics=metrics)
     wide_deep.fit(X_tr_wd, Y_tr_wd, nb_epoch=10, batch_size=128)
 
